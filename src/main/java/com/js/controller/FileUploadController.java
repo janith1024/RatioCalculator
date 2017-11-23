@@ -2,11 +2,13 @@ package com.js.controller;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import com.js.data.RCdata;
 import com.js.service.*;
 import com.js.util.*;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -57,18 +59,15 @@ public class FileUploadController {
 
     @PostMapping("/")
     public String handleFileUpload(@RequestParam("file1") MultipartFile file1,@RequestParam("file2") MultipartFile file2,
-                                   RedirectAttributes redirectAttributes) throws IOException {
+                                   RedirectAttributes redirectAttributes) throws IOException, InvalidFormatException {
 //        storageService.store(file1);
 //        storageService.store(file2);
         ExcelManager.ExcelSheet excelSheet1 = ExcelManager.getReadSheet(file1.getInputStream(), 0);
+        ArrayList<String> list = new ArrayList<>();
         if(excelSheet1 != null){
-            RCdata rCdata = new RCdata();
-            rCdata.setName("Add");
-            //excelSheet1.get(1,2);read from excel file
-            rCdata.setValue(String.valueOf(calculateService.add(5,8)));
-            redirectAttributes.addFlashAttribute("message", rCdata);
+            list.add(new RCdata("Current Ratio",calculateService.currentRatio(excelSheet1.getDouble(25,1),excelSheet1.getDouble(51,1))).toString());
         }
-//        ExcelManeager.ExcelSheet excelSheet2 = ExcelManeager.getReadSheet(file2.getInputStream(),0);
+        redirectAttributes.addFlashAttribute("results", list);
 
         return "redirect:/";
     }

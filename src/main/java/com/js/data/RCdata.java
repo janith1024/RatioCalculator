@@ -3,7 +3,12 @@ package com.js.data;
 public class RCdata {
 
   private String name;
-  private String value;
+  private double value;
+
+  public RCdata(String name,double value){
+    this.name = name;
+    this.value = value;
+  }
 
   public String getName() {
     return name;
@@ -13,11 +18,16 @@ public class RCdata {
     this.name = name;
   }
 
-  public String getValue() {
+  public double getValue() {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(double value) {
     this.value = value;
+  }
+
+  @Override
+  public String toString() {
+    return getName()+" : "+getValue();
   }
 }

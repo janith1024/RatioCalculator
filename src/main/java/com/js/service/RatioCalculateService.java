@@ -2,5 +2,14 @@ package com.js.service;
 
 public interface RatioCalculateService {
 
-  int add(int a,int b);
+
+  /**
+   * If Ratio = Liquidity Ratio && Sub Ratio = Current Ratio
+   * %Calculate Current Ratio = Current Assets/Current Liabilities
+   * Input = Balance Sheet
+   * @param currentAsset
+   * @param currentLiabilities
+   * @return
+   */
+  double currentRatio(double currentAsset, double currentLiabilities);
 }

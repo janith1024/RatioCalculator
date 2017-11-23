@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class RatioCalculateServiceImpl implements RatioCalculateService {
 
   @Override
-  public int add(int a, int b) {
-    return a+b;
+  public double currentRatio(double currentAsset, double currentLiabilities) {
+    return currentAsset/currentLiabilities;
   }
 }
