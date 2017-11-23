@@ -4,8 +4,9 @@ package com.js.controller;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
-import com.js.service.StorageService;
-import com.js.util.RCException;
+import com.js.data.RCdata;
+import com.js.service.*;
+import com.js.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -26,10 +27,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class FileUploadController {
 
     private final StorageService storageService;
+    private final RatioCalculateService calculateService;
 
     @Autowired
-    public FileUploadController(StorageService storageService) {
+    public FileUploadController(StorageService storageService, RatioCalculateService calculateService) {
         this.storageService = storageService;
+        this.calculateService = calculateService;
     }
 
     @GetMapping("/")
@@ -54,14 +57,18 @@ public class FileUploadController {
 
     @PostMapping("/")
     public String handleFileUpload(@RequestParam("file1") MultipartFile file1,@RequestParam("file2") MultipartFile file2,
-                                   RedirectAttributes redirectAttributes) {
-
-        String message = "";
-        storageService.store(file1);
-        message = "You successfully uploaded " + file1.getOriginalFilename();
-        storageService.store(file2);
-        message+= " , "+file2.getOriginalFilename();
-        redirectAttributes.addFlashAttribute("message",message);
+                                   RedirectAttributes redirectAttributes) throws IOException {
+//        storageService.store(file1);
+//        storageService.store(file2);
+        ExcelManager.ExcelSheet excelSheet1 = ExcelManager.getReadSheet(file1.getInputStream(), 0);
+        if(excelSheet1 != null){
+            RCdata rCdata = new RCdata();
+            rCdata.setName("Add");
+            //excelSheet1.get(1,2);read from excel file
+            rCdata.setValue(String.valueOf(calculateService.add(5,8)));
+            redirectAttributes.addFlashAttribute("message", rCdata);
+        }
+//        ExcelManeager.ExcelSheet excelSheet2 = ExcelManeager.getReadSheet(file2.getInputStream(),0);
 
         return "redirect:/";
     }
