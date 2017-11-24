@@ -1,5 +1,7 @@
 package com.js.data;
 
+import java.text.NumberFormat;
+
 public class RCdata {
 
   private String name;
@@ -28,6 +30,6 @@ public class RCdata {
 
   @Override
   public String toString() {
-    return getName()+" : "+getValue();
+    return getName()+" : "+ NumberFormat.getNumberInstance().format(getValue());
   }
 }
