@@ -64,11 +64,11 @@ public class FileUploadController {
         ArrayList<String> list = new ArrayList<>();
         ExcelManager.ExcelSheet excelBalanceSheet = null;
         ExcelManager.ExcelSheet excelIncomeStatement = null;
-        if (balanceSheet != null) {
+        if (!balanceSheet.isEmpty()) {
 //        storageService.store(balanceSheet);
             excelBalanceSheet = ExcelManager.getReadSheet(balanceSheet.getInputStream(), 0);
         }
-        if (balanceSheet != null) {
+        if (!incomeStatement.isEmpty()) {
 //        storageService.store(incomeStatement);
             excelIncomeStatement = ExcelManager.getReadSheet(incomeStatement.getInputStream(), 0);
         }
