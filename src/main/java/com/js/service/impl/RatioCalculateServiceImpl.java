@@ -42,8 +42,8 @@ public class RatioCalculateServiceImpl implements RatioCalculateService {
   }
 
   @Override
-  public double returnOnEquityRatio(double netProfitAfterTax, double equity) {
-    return netProfitAfterTax/equity*100;
+  public double returnOnEquityRatio(double netProfitAfterTax, double shareholdersFunds) {
+    return netProfitAfterTax/shareholdersFunds*100;
   }
 
   @Override

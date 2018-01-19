@@ -86,15 +86,15 @@ public interface RatioCalculateService {
 
     /**
      * If Ratio = Profitability Ratio && Sub Ratio = Return on Equity Ratio
-     * Calculate Net Profit Ratio = Net Profit After Tax / Equity*100
+     * Calculate Net Profit Ratio = Net Profit After Tax / Shareholder's Funds*100
      * Input = Income Statement & Balance Sheet
      *
      * @param netProfitAfterTax
-     * @param equity
+     * @param shareholdersFunds
      * @return
      */
 
-    double returnOnEquityRatio(double netProfitAfterTax, double equity);
+    double returnOnEquityRatio(double netProfitAfterTax, double shareholdersFunds);
 
     /**
      * If Ratio = Profitability Ratio && Sub Ratio = Dividend Payout Ratio

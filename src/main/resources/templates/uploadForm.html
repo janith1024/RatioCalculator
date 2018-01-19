@@ -1,98 +1,157 @@
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700" rel="stylesheet" type="text/css">
+    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+</head>
 
-<body style="background-color:#F3FAB6;">
-
-<img src="images/calculator.jpg" alt="Smiley face" width="200" height="200" align="right">
-
-<header>
-    <h1 style="color:powderblue;text-align:left;font-size:150%;"><i>FNCLratio<br>CAL</i></h1>
-    <h3 style="color:green;text-align:left;font-size:170%;face:Garamond;">What is Financial Ratio....</h3>
-    <p style="color:green;text-align:left;font-size:110%;face:Garamond;">A Financial Ratio is a relative ration of two
-        selected numerical values taken form organization's financial reports.<br>These numerical values taken from
-        mainly from the Balance Sheet and the Income Statement.<br>Financial ratios are categorized according to the
-        financial aspects of an organization.<br>
-        &nbsp Liquidity Ratio<br>&nbsp Profitability Ratio<br>&nbsp Turnover Ratio<br>&nbsp Solvency Ratio</p>
-</header>
-
-<h1 style="color:darkgreen;text-align:center;font-size:250%;">Financial Ratio Calculator</h1>
-
-
-<div>
-    <form method="POST" enctype="multipart/form-data" action="/">
-        <table>
-            <tr>
-                <td>Balance Sheet :</td>
-                <td><input type="file" name="balanceSheet"  accept=".xls,.xlsx"/></td>
-            </tr>
-            <tr>
-                <td>Income Statement :</td>
-                <td><input type="file" name="incomeStatement"  accept=".xls,.xlsx"/></td>
-            </tr>
-
-
-            <tr>
-                <td>Ratio :</td>
-                <td>
-                    <select>
-                        <option value="Select All">Select All</option>
-                        <option value="Liquidity Ratio">Liquidity Ratio</option>
-                        <option value="Profitability Ratio">Profitability Ratio</option>
-                        <option value="Turnover Ratio">Turnover Ratio</option>
-                        <option value="Solvency Ratio">Solvency Ratio</option>
-                    </select>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td>Sub Ratio :</td>
-                <td>
-                    <select>
-                        <option value="Select All">Select All</option>
-                        <option value="Current Ratio">Current Ratio</option>
-                        <option value="Quick Ratio">Quick Ratio</option>
-                        <option value="Absolute Liquid Ratio">Absolute Liquid Ratio</option>
-
-                        <option value="GRoss Profit Ratio">GRoss Profit Ratio</option>
-                        <option value="Net Profit Ratio">Net Profit Ratio</option>
-                        <option value="Operating Profit Ratio">Operating Profit Ratio</option>
-                        <option value="Earnings Per Share Ratio">Earnings Per Share Ratio</option>
-                        <option value="Return On Equity Ratio">Return On Equity Ratio</option>
-                        <option value="Dividend Payout Ratio">Dividend Payout Ratio</option>
-
-                        <option value="Stock Turnover Ratio">Stock Turnover Ratio</option>
-                        <option value="Fixed Asset Turnover Ratio">Fixed Asset Turnover Ratio</option>
-                        <option value="Capital Turnover Ratio">Capital Turnover Ratio</option>
-
-                        <option value="Debt Equity Ratio">Debt Equity Ratio</option>
-
-                    </select>
-                </td>
-
-
-            <tr>
-                <td><input type="Submit" value="Calculate"></td>
-                <td><input type="reset"></td>
-            </tr>
-        </table>
-    </form>
+<body>
+<div id="banner-wrapper"></div>
+<div id="header-wrapper">
+    <div id="header" class="container">
+        <div id="logo">
+            <h1>Financial Ratio Calculator</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="#" accesskey="1" title="">Homepage</a></li>
+                <li><a href="#" accesskey="2" title="">Our Clients</a></li>
+                <li><a href="#" accesskey="3" title="">About Us</a></li>
+                <li><a href="#" accesskey="4" title="">Careers</a></li>
+                <li><a href="#" accesskey="5" title="">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
+<div id="page" class="container">
+    <div id="content">
+        <div class="post">
+            <h2 class="title"><a href="#">About Financial Ratios.....</a></h2>
+            <p class="meta"><span class="date">What is Financial Ratio....</span></p>
+            <div style="clear: both;">&nbsp;</div>
+            <div class="entry">
+                <p>A Financial Ratio is a relative ration of two
+                    selected numerical values taken form organization's financial reports.<br>These numerical values taken
+                    mainly from the Balance Sheet and the Income Statement.<br>Financial ratios are categorized according to the
+                    financial aspects of an organization.<br>
+                    &nbsp Liquidity Ratio<br>&nbsp Profitability Ratio<br>&nbsp Turnover Ratio<br>&nbsp Solvency Ratio</p>
+            </div>
+        </div>
+        <div class="post">
 
-<div>
-    <ul>
-        <li th:each="file : ${files}">
-            <a th:href="${file}" th:text="${file}"/>
-        </li>
-    </ul>
+            <form method="POST" enctype="multipart/form-data" action="/">
+                <table>
+                    <tr>
+                        <td>Balance Sheet :</td>
+                        <td><input type="file" name="balanceSheet"  accept=".xls,.xlsx"/></td>
+                    </tr>
+                    <tr>
+                        <td>Income Statement :</td>
+                        <td><input type="file" name="incomeStatement"  accept=".xls,.xlsx"/></td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Ratio :</td>
+                        <td>
+                            <select>
+                                <option value="Select All">Select All</option>
+                                <option value="Liquidity Ratio">Liquidity Ratio</option>
+                                <option value="Profitability Ratio">Profitability Ratio</option>
+                                <option value="Turnover Ratio">Turnover Ratio</option>
+                                <option value="Solvency Ratio">Solvency Ratio</option>
+                            </select>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Sub Ratio :</td>
+                        <td>
+                            <select>
+                                <option value="Select All">Select All</option>
+                                <option value="Current Ratio">Current Ratio</option>
+                                <option value="Quick Ratio">Quick Ratio</option>
+                                <option value="Absolute Liquid Ratio">Absolute Liquid Ratio</option>
+
+                                <option value="GRoss Profit Ratio">GRoss Profit Ratio</option>
+                                <option value="Net Profit Ratio">Net Profit Ratio</option>
+                                <option value="Operating Profit Ratio">Operating Profit Ratio</option>
+                                <option value="Earnings Per Share Ratio">Earnings Per Share Ratio</option>
+                                <option value="Return On Equity Ratio">Return On Equity Ratio</option>
+                                <option value="Dividend Payout Ratio">Dividend Payout Ratio</option>
+
+                                <option value="Stock Turnover Ratio">Stock Turnover Ratio</option>
+                                <option value="Fixed Asset Turnover Ratio">Fixed Asset Turnover Ratio</option>
+                                <option value="Capital Turnover Ratio">Capital Turnover Ratio</option>
+
+                                <option value="Debt Equity Ratio">Debt Equity Ratio</option>
+
+                            </select>
+                        </td>
+
+
+                    <tr>
+                        <td><input class="more" type="Submit" value="Calculate"></td>
+                        <td><input class="more" type="reset"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="post">
+            <h2 class="title"><a href="#">Result</a></h2>
+            <ul>
+                <li th:each="line : ${results}">
+                    <p th:text="${line}"/>
+                </li>
+            </ul>
+        </div>
+        <div style="clear: both;">&nbsp;</div>
+    </div>
+    <!-- end #content -->
+    <div id="sidebar">
+        <ul>
+            <li>
+                <h2>finan</h2>
+                <ul>
+                    <li><a href="#">Aliquam libero</a></li>
+                    <li><a href="#">Consectetuer adipiscing elit</a></li>
+                    <li><a href="#">Metus aliquam pellentesque</a></li>
+                    <li><a href="#">Suspendisse iaculis mauris</a></li>
+                    <li><a href="#">Urnanet non molestie semper</a></li>
+                    <li><a href="#">Proin gravida orci porttitor</a></li>
+                </ul>
+            </li>
+            <li>
+                <h2>Blogroll</h2>
+                <ul>
+                    <li><a href="#">Aliquam libero</a></li>
+                    <li><a href="#">Consectetuer adipiscing elit</a></li>
+                    <li><a href="#">Metus aliquam pellentesque</a></li>
+                    <li><a href="#">Suspendisse iaculis mauris</a></li>
+                    <li><a href="#">Urnanet non molestie semper</a></li>
+                    <li><a href="#">Proin gravida orci porttitor</a></li>
+                </ul>
+            </li>
+            <li>
+                <h2>Archives</h2>
+                <ul>
+                    <li><a href="#">Aliquam libero</a></li>
+                    <li><a href="#">Consectetuer adipiscing elit</a></li>
+                    <li><a href="#">Metus aliquam pellentesque</a></li>
+                    <li><a href="#">Suspendisse iaculis mauris</a></li>
+                    <li><a href="#">Urnanet non molestie semper</a></li>
+                    <li><a href="#">Proin gravida orci porttitor</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- end #sidebar -->
 </div>
-
-<p>Result</p>
-<div>
-    <ul>
-        <li th:each="file : ${results}">
-            <p th:text="${file}"/>
-        </li>
-    </ul>
+<div id="footer" class="container">
 </div>
 
 </body>
