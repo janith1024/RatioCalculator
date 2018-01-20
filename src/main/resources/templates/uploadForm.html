@@ -6,6 +6,7 @@
     <meta name="description" content="" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700" rel="stylesheet" type="text/css">
     <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="js/jquery-3.0.0.js"></script>
 </head>
 
 <body>
@@ -101,11 +102,19 @@
                 </table>
             </form>
         </div>
-        <div class="post">
+        <div th:if="${results != null}" class="post">
             <h2 class="title"><a href="#">Result</a></h2>
             <ul>
                 <li th:each="line : ${results}">
                     <p th:text="${line}"/>
+                </li>
+            </ul>
+        </div>
+        <div id="Liquidity" class="post">
+            <h2 class="title"><a href="#">Liquidity Ratios </a></h2>
+            <ul>
+                <li >
+                    <p>Test</p>
                 </li>
             </ul>
         </div>
@@ -115,44 +124,59 @@
     <div id="sidebar">
         <ul>
             <li>
-                <h2>finan</h2>
-                <ul>
-                    <li><a href="#">Aliquam libero</a></li>
-                    <li><a href="#">Consectetuer adipiscing elit</a></li>
-                    <li><a href="#">Metus aliquam pellentesque</a></li>
-                    <li><a href="#">Suspendisse iaculis mauris</a></li>
-                    <li><a href="#">Urnanet non molestie semper</a></li>
-                    <li><a href="#">Proin gravida orci porttitor</a></li>
+                <h2>Financial Ratios</h2>
+                <ul >
+                    <li><a href="#" id="Liquidity">Liquidity Ratios</a></li>
+                    <li><a href="#">Profitability Ratios</a></li>
+                    <li><a href="#">Turnover Ratios</a></li>
+                    <li><a href="#">Solvency Ratio</a></li>
                 </ul>
             </li>
-            <li>
-                <h2>Blogroll</h2>
-                <ul>
-                    <li><a href="#">Aliquam libero</a></li>
-                    <li><a href="#">Consectetuer adipiscing elit</a></li>
-                    <li><a href="#">Metus aliquam pellentesque</a></li>
-                    <li><a href="#">Suspendisse iaculis mauris</a></li>
-                    <li><a href="#">Urnanet non molestie semper</a></li>
-                    <li><a href="#">Proin gravida orci porttitor</a></li>
-                </ul>
-            </li>
-            <li>
-                <h2>Archives</h2>
-                <ul>
-                    <li><a href="#">Aliquam libero</a></li>
-                    <li><a href="#">Consectetuer adipiscing elit</a></li>
-                    <li><a href="#">Metus aliquam pellentesque</a></li>
-                    <li><a href="#">Suspendisse iaculis mauris</a></li>
-                    <li><a href="#">Urnanet non molestie semper</a></li>
-                    <li><a href="#">Proin gravida orci porttitor</a></li>
-                </ul>
-            </li>
+            <!--<li>-->
+                <!--<h2>Blogroll</h2>-->
+                <!--<ul>-->
+                    <!--<li><a href="#">Aliquam libero</a></li>-->
+                    <!--<li><a href="#">Consectetuer adipiscing elit</a></li>-->
+                    <!--<li><a href="#">Metus aliquam pellentesque</a></li>-->
+                    <!--<li><a href="#">Suspendisse iaculis mauris</a></li>-->
+                    <!--<li><a href="#">Urnanet non molestie semper</a></li>-->
+                    <!--<li><a href="#">Proin gravida orci porttitor</a></li>-->
+                <!--</ul>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<h2>Archives</h2>-->
+                <!--<ul>-->
+                    <!--<li><a href="#">Aliquam libero</a></li>-->
+                    <!--<li><a href="#">Consectetuer adipiscing elit</a></li>-->
+                    <!--<li><a href="#">Metus aliquam pellentesque</a></li>-->
+                    <!--<li><a href="#">Suspendisse iaculis mauris</a></li>-->
+                    <!--<li><a href="#">Urnanet non molestie semper</a></li>-->
+                    <!--<li><a href="#">Proin gravida orci porttitor</a></li>-->
+                <!--</ul>-->
+            <!--</li>-->
         </ul>
     </div>
     <!-- end #sidebar -->
 </div>
 <div id="footer" class="container">
 </div>
+
+<script>
+
+    $(function () {
+        $('#LiquidityA').click(function () {
+            hideAll();
+            $('#Liquidity').show();
+        });
+
+        function hideAll() {
+            $('#Liquidity').hide();
+        }
+
+        hideAll();
+    });
+
+</script>
 
 </body>
 
