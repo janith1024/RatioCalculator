@@ -1,11 +1,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700" rel="stylesheet" type="text/css">
-    <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700"
+          rel="stylesheet" type="text/css">
+    <link href="default.css" rel="stylesheet" type="text/css" media="all"/>
     <script src="js/jquery-3.0.0.js"></script>
 </head>
 
@@ -35,30 +36,33 @@
             <div style="clear: both;">&nbsp;</div>
             <div class="entry">
                 <p>A Financial Ratio is a relative ration of two
-                    selected numerical values taken form organization's financial reports.<br>These numerical values taken
-                    mainly from the Balance Sheet and the Income Statement.<br>Financial ratios are categorized according to the
+                    selected numerical values taken form organization's financial reports.<br>These numerical values
+                    taken
+                    mainly from the Balance Sheet and the Income Statement.<br>Financial ratios are categorized
+                    according to the
                     financial aspects of an organization.<br>
-                    &nbsp Liquidity Ratio<br>&nbsp Profitability Ratio<br>&nbsp Turnover Ratio<br>&nbsp Solvency Ratio</p>
+                    &nbsp Liquidity Ratio<br>&nbsp Profitability Ratio<br>&nbsp Turnover Ratio<br>&nbsp Solvency Ratio
+                </p>
             </div>
         </div>
         <div class="post">
 
-            <form method="POST" enctype="multipart/form-data" action="/">
+            <form method="POST" enctype="multipart/form-data" action="/"  th:object="${formData}">
                 <table>
                     <tr>
                         <td>Balance Sheet :</td>
-                        <td><input type="file" name="balanceSheet"  accept=".xls,.xlsx"/></td>
+                        <td><input type="file" name="balanceSheet" accept=".xls,.xlsx"/></td>
                     </tr>
                     <tr>
                         <td>Income Statement :</td>
-                        <td><input type="file" name="incomeStatement"  accept=".xls,.xlsx"/></td>
+                        <td><input type="file" name="incomeStatement" accept=".xls,.xlsx"/></td>
                     </tr>
 
 
                     <tr>
                         <td>Ratio :</td>
                         <td>
-                            <select>
+                            <select id="ratio" th:field="*{ratio}">
                                 <option value="Select All">Select All</option>
                                 <option value="Liquidity Ratio">Liquidity Ratio</option>
                                 <option value="Profitability Ratio">Profitability Ratio</option>
@@ -72,25 +76,8 @@
                     <tr>
                         <td>Sub Ratio :</td>
                         <td>
-                            <select>
+                            <select id="subRatio" th:field="*{subRatio}">
                                 <option value="Select All">Select All</option>
-                                <option value="Current Ratio">Current Ratio</option>
-                                <option value="Quick Ratio">Quick Ratio</option>
-                                <option value="Absolute Liquid Ratio">Absolute Liquid Ratio</option>
-
-                                <option value="GRoss Profit Ratio">GRoss Profit Ratio</option>
-                                <option value="Net Profit Ratio">Net Profit Ratio</option>
-                                <option value="Operating Profit Ratio">Operating Profit Ratio</option>
-                                <option value="Earnings Per Share Ratio">Earnings Per Share Ratio</option>
-                                <option value="Return On Equity Ratio">Return On Equity Ratio</option>
-                                <option value="Dividend Payout Ratio">Dividend Payout Ratio</option>
-
-                                <option value="Stock Turnover Ratio">Stock Turnover Ratio</option>
-                                <option value="Fixed Asset Turnover Ratio">Fixed Asset Turnover Ratio</option>
-                                <option value="Capital Turnover Ratio">Capital Turnover Ratio</option>
-
-                                <option value="Debt Equity Ratio">Debt Equity Ratio</option>
-
                             </select>
                         </td>
 
@@ -113,7 +100,7 @@
         <div id="Liquidity" class="post">
             <h2 class="title"><a href="#">Liquidity Ratios </a></h2>
             <ul>
-                <li >
+                <li>
                     <p>Test</p>
                 </li>
             </ul>
@@ -125,7 +112,7 @@
         <ul>
             <li>
                 <h2>Financial Ratios</h2>
-                <ul >
+                <ul>
                     <li><a href="#" id="Liquidity">Liquidity Ratios</a></li>
                     <li><a href="#">Profitability Ratios</a></li>
                     <li><a href="#">Turnover Ratios</a></li>
@@ -133,26 +120,26 @@
                 </ul>
             </li>
             <!--<li>-->
-                <!--<h2>Blogroll</h2>-->
-                <!--<ul>-->
-                    <!--<li><a href="#">Aliquam libero</a></li>-->
-                    <!--<li><a href="#">Consectetuer adipiscing elit</a></li>-->
-                    <!--<li><a href="#">Metus aliquam pellentesque</a></li>-->
-                    <!--<li><a href="#">Suspendisse iaculis mauris</a></li>-->
-                    <!--<li><a href="#">Urnanet non molestie semper</a></li>-->
-                    <!--<li><a href="#">Proin gravida orci porttitor</a></li>-->
-                <!--</ul>-->
+            <!--<h2>Blogroll</h2>-->
+            <!--<ul>-->
+            <!--<li><a href="#">Aliquam libero</a></li>-->
+            <!--<li><a href="#">Consectetuer adipiscing elit</a></li>-->
+            <!--<li><a href="#">Metus aliquam pellentesque</a></li>-->
+            <!--<li><a href="#">Suspendisse iaculis mauris</a></li>-->
+            <!--<li><a href="#">Urnanet non molestie semper</a></li>-->
+            <!--<li><a href="#">Proin gravida orci porttitor</a></li>-->
+            <!--</ul>-->
             <!--</li>-->
             <!--<li>-->
-                <!--<h2>Archives</h2>-->
-                <!--<ul>-->
-                    <!--<li><a href="#">Aliquam libero</a></li>-->
-                    <!--<li><a href="#">Consectetuer adipiscing elit</a></li>-->
-                    <!--<li><a href="#">Metus aliquam pellentesque</a></li>-->
-                    <!--<li><a href="#">Suspendisse iaculis mauris</a></li>-->
-                    <!--<li><a href="#">Urnanet non molestie semper</a></li>-->
-                    <!--<li><a href="#">Proin gravida orci porttitor</a></li>-->
-                <!--</ul>-->
+            <!--<h2>Archives</h2>-->
+            <!--<ul>-->
+            <!--<li><a href="#">Aliquam libero</a></li>-->
+            <!--<li><a href="#">Consectetuer adipiscing elit</a></li>-->
+            <!--<li><a href="#">Metus aliquam pellentesque</a></li>-->
+            <!--<li><a href="#">Suspendisse iaculis mauris</a></li>-->
+            <!--<li><a href="#">Urnanet non molestie semper</a></li>-->
+            <!--<li><a href="#">Proin gravida orci porttitor</a></li>-->
+            <!--</ul>-->
             <!--</li>-->
         </ul>
     </div>
@@ -174,7 +161,40 @@
         }
 
         hideAll();
+        $('#ratio').change(function () {
+            loadSubRatio(this.value);
+        })
     });
+
+    function loadSubRatio(val) {
+        var html = '<option value="Select All">Select All</option>';
+        switch (val) {
+            case "Liquidity Ratio":
+                html += '<option value="Current Ratio">Current Ratio</option>' +
+                    '<option value="Quick Ratio">Quick Ratio</option>' +
+                    '<option value="Absolute Liquid Ratio">Absolute Liquid Ratio</option>';
+                break;
+            case "Profitability Ratio":
+                html += '<option value="GRoss Profit Ratio">GRoss Profit Ratio</option>' +
+                    '<option value="Net Profit Ratio">Net Profit Ratio</option>' +
+                    '<option value="Operating Profit Ratio">Operating Profit Ratio</option>' +
+                    '<option value="Earnings Per Share Ratio">Earnings Per Share Ratio</option>' +
+                    '<option value="Return On Equity Ratio">Return On Equity Ratio</option>' +
+                    '<option value="Dividend Payout Ratio">Dividend Payout Ratio</option>';
+                break;
+            case "Turnover Ratio":
+                html += '<option value="Stock Turnover Ratio">Stock Turnover Ratio</option>' +
+                    '<option value="Fixed Asset Turnover Ratio">Fixed Asset Turnover Ratio</option>' +
+                    '<option value="Capital Turnover Ratio">Capital Turnover Ratio</option>';
+                break;
+            case "Solvency Ratio":
+                html += '<option value="Debt Equity Ratio">Debt Equity Ratio</option>';
+                break;
+
+        }
+
+        $('#subRatio').html(html);
+    }
 
 </script>
 
