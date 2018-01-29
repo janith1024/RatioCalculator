@@ -84,11 +84,11 @@ public class FileUploadController {
 
     private List<String> getLiquidityRatio(ExcelManager.ExcelSheet excelBalanceSheet, FormData formData) {
         ArrayList<String> list = new ArrayList<>();
-        if (excelBalanceSheet != null && formData != null) {
-            if (formData.getRatio().equalsIgnoreCase("Liquidity Ratio") || formData.getRatio().equalsIgnoreCase("Select All")) {
+        if (formData != null && (formData.getRatio().equalsIgnoreCase("Liquidity Ratio") || formData.getRatio().equalsIgnoreCase("Select All"))) {
+            if (excelBalanceSheet != null) {
                 switch ((formData.getSubRatio())) {
                     case "Current Ratio":
-                        list.add(new RCdata("Current Ratio", calculateService.currentRatio(excelBalanceSheet.getDouble(24, 1), excelBalanceSheet.getDouble(50, 1))).toString());
+                        list.add(new RCdata("Current Ratio", calculateService.currentRatio(excelBalanceSheet.getDouble("Total Current Assets", 1), excelBalanceSheet.getDouble("Total Current Liabilities", 1))).toString());
                         break;
                     case "Quick Ratio":
                         list.add(new RCdata("Quick Ratio", calculateService.quickRatio(excelBalanceSheet.getDouble(24, 1), excelBalanceSheet.getDouble(21, 1), excelBalanceSheet.getDouble(50, 1))).toString());
@@ -101,17 +101,17 @@ public class FileUploadController {
                         list.add(new RCdata("Quick Ratio", calculateService.quickRatio(excelBalanceSheet.getDouble(24, 1), excelBalanceSheet.getDouble(21, 1), excelBalanceSheet.getDouble(50, 1))).toString());
                         list.add(new RCdata("Absolute Liquid Ratio", calculateService.absoluteLiquidRatio(excelBalanceSheet.getDouble(19, 1), excelBalanceSheet.getDouble(50, 1))).toString());
                 }
+            } else {
+                list.add("something went wrong");
             }
-        } else {
-            list.add("something went wrong");
         }
         return list;
     }
 
     private List<String> getProfitabilityRatio(ExcelManager.ExcelSheet excelIncomeStatement, ExcelManager.ExcelSheet excelBalanceSheet, FormData formData) {
         ArrayList<String> list = new ArrayList<>();
-        if (excelIncomeStatement != null && formData != null) {
-            if (formData.getRatio().equalsIgnoreCase("Profitability Ratio") || formData.getRatio().equalsIgnoreCase("Select All")) {
+        if (formData != null && (formData.getRatio().equalsIgnoreCase("Profitability Ratio") || formData.getRatio().equalsIgnoreCase("Select All"))) {
+            if (excelIncomeStatement != null) {
                 switch ((formData.getSubRatio())) {
                     case "GRoss Profit Ratio":
                         list.add(new RCdata("Gross Profit Ratio", calculateService.grossProfitRatio(excelIncomeStatement.getDouble(8, 2), excelIncomeStatement.getDouble(3, 2))).toString());
@@ -123,7 +123,7 @@ public class FileUploadController {
                         list.add(new RCdata("Operating Profit Ratio", calculateService.operatingProfitRatio(excelIncomeStatement.getDouble(17, 2), excelIncomeStatement.getDouble(3, 2))).toString());
                         break;
                     case "Earnings Per Share Ratio":
-                        list.add(new RCdata("Earning Per Share Ratio", calculateService.earningPerShareRatio(excelIncomeStatement.getDouble(19, 2), excelIncomeStatement.getDouble(23, 2))).toString());
+                        list.add(new RCdata("Earnings Per Share Ratio", calculateService.earningsPerShareRatio(excelIncomeStatement.getDouble(19, 2), excelIncomeStatement.getDouble(23, 2))).toString());
                         break;
                     case "Return On Equity Ratio":
                         break;
@@ -134,7 +134,7 @@ public class FileUploadController {
                         list.add(new RCdata("Gross Profit Ratio", calculateService.grossProfitRatio(excelIncomeStatement.getDouble(8, 2), excelIncomeStatement.getDouble(3, 2))).toString());
                         list.add(new RCdata("Net Profit Ratio", calculateService.netProfitRatio(excelIncomeStatement.getDouble(19, 2), excelIncomeStatement.getDouble(3, 2))).toString());
                         list.add(new RCdata("Operating Profit Ratio", calculateService.operatingProfitRatio(excelIncomeStatement.getDouble(17, 2), excelIncomeStatement.getDouble(3, 2))).toString());
-                        list.add(new RCdata("Earning Per Share Ratio", calculateService.earningPerShareRatio(excelIncomeStatement.getDouble(19, 2), excelIncomeStatement.getDouble(23, 2))).toString());
+                        list.add(new RCdata("Earnings Per Share Ratio", calculateService.earningsPerShareRatio(excelIncomeStatement.getDouble(19, 2), excelIncomeStatement.getDouble(23, 2))).toString());
                         list.add(new RCdata("Dividend Payout Ratio", calculateService.dividendPayoutRatio(excelIncomeStatement.getDouble(22, 2), excelIncomeStatement.getDouble(19, 2))).toString());
 
                 }
@@ -142,9 +142,9 @@ public class FileUploadController {
                     list.add(new RCdata("Return On Equity Ratio", calculateService.returnOnEquityRatio(excelIncomeStatement.getDouble(19, 2), excelBalanceSheet.getDouble(35, 1))).toString());
 
                 }
+            } else {
+                list.add("something went wrong");
             }
-        } else {
-            list.add("something went wrong");
         }
         return list;
     }
