@@ -19,8 +19,8 @@
         </div>
         <div id="menu">
             <ul>
-                <li><a href="#" accesskey="1" title="">Homepage</a></li>
-                <li><a href="#" accesskey="2" title="">Support</a></li>
+                <li><a id="homeA" accesskey="1" title="">Homepage</a></li>
+                <li><a id="supportA" accesskey="2" title="">Support</a></li>
                 <li><a href="#" accesskey="3" title="">About Us</a></li>
                 <li><a href="#" accesskey="5" title="">Contact Us</a></li>
             </ul>
@@ -29,7 +29,7 @@
 </div>
 <div id="page" class="container">
     <div id="content">
-        <div class="post">
+        <div id="titlePage" class="post">
             <h2 class="title"><a href="#">About Financial Ratios.....</a></h2>
             <p class="meta"><span class="date">What is Financial Ratio....</span></p>
             <div style="clear: both;">&nbsp;</div>
@@ -44,7 +44,7 @@
                 </p>
             </div>
         </div>
-        <div class="post">
+        <div id="form" class="post">
 
             <form method="POST" enctype="multipart/form-data" action="/"  th:object="${formData}">
                 <table>
@@ -88,7 +88,7 @@
                 </table>
             </form>
         </div>
-        <div th:if="${results != null}" class="post">
+        <div id="result" th:if="${results != null}" class="post">
             <h2 class="title"><a href="#">Result</a></h2>
             <ul>
                 <li th:each="line : ${results}">
@@ -97,10 +97,26 @@
             </ul>
         </div>
         <div id="Liquidity" class="post">
-            <h2 class="title"><a href="#">Liquidity Ratios </a></h2>
+            <h2 class="title"><a>Liquidity Ratios </a></h2>
             <ul>
                 <li>
                     <p>Test</p>
+                </li>
+            </ul>
+        </div>
+        <div id="Profitability" class="post">
+            <h2 class="title"><a>Profitability Ratios </a></h2>
+            <ul>
+                <li>
+                    <p>Test</p>
+                </li>
+            </ul>
+        </div>
+        <div id="support" class="post">
+            <h2 class="title"><a>support </a></h2>
+            <ul>
+                <li>
+                    <p>support</p>
                 </li>
             </ul>
         </div>
@@ -112,10 +128,10 @@
             <li>
                 <h2>Financial Ratios</h2>
                 <ul>
-                    <li><a href="#" id="Liquidity">Liquidity Ratios</a></li>
-                    <li><a href="#">Profitability Ratios</a></li>
-                    <li><a href="#">Turnover Ratios</a></li>
-                    <li><a href="#">Solvency Ratio</a></li>
+                    <li><a id="LiquidityA">Liquidity Ratios</a></li>
+                    <li><a id="ProfitabilityA">Profitability Ratios</a></li>
+                    <li><a >Turnover Ratios</a></li>
+                    <li><a >Solvency Ratio</a></li>
                 </ul>
             </li>
             <!--<li>-->
@@ -150,16 +166,40 @@
 <script>
 
     $(function () {
+        $('#homeA').click(function () {
+            hideAll();
+            home();
+        });
+        $('#supportA').click(function () {
+            hideAll();
+            $('#support').show();
+        });
         $('#LiquidityA').click(function () {
             hideAll();
             $('#Liquidity').show();
         });
+        $('#ProfitabilityA').click(function () {
+            hideAll();
+            $('#Profitability').show();
+        });
 
         function hideAll() {
             $('#Liquidity').hide();
+            $('#Profitability').hide();
+            $('#titlePage').hide();
+            $('#form').hide();
+            $('#result').hide();
+            $('#support').hide();
+        }
+
+        function home() {
+            $('#titlePage').show();
+            $('#form').show();
+            $('#result').show();
         }
 
         hideAll();
+        home();
         $('#ratio').change(function () {
             loadSubRatio(this.value);
         })
